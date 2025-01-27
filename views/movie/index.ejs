@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon" />
+    <title>FrameRate </title>
+  </head>
+
+  <main>
+    <div class="reviews__content">
+      <h1><%- movie.title %> (<%- movie.releaseDate.split('-').at(0) %>)</h1>
+      <div class="reviews__wrapper">
+        <div class="reviews__left">
+          <img class="reviews__image" src="<%- movie.imageURL %>" alt="" />
+          <button class="btn reviews__btn--add">Add a review</button>
+        </div>
+        <div class="reviews__right">
+          <ul class="reviews__list">
+            <% for (let review of reviews) { %>
+            <li class="reviews__item">
+              <div class="reviews__rating"><%- review.rating %></div>
+              <div class="reviews__content">
+                <p class="reviews__timestamp"><%- review.createdAt %></p>
+                <p><%- review.content %></p>
+              </div>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+</html>

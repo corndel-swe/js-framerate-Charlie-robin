@@ -1,1 +1,46 @@
-<!-- Add your views in this folder -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon" />
+    <title>FrameRate</title>
+  </head>
+
+  <main>
+    <nav class="genres__list">
+      <div class="genres__item <%= !query.genre && 'genres__item--active' %>">
+        <a href="/">All</a>
+      </div>
+      <% for (let genre of genres) { %>
+      <div
+        class="genres__item <%= genre == query.genre && 'genres__item--active' %>"
+      >
+        <a href="<%= `/?genre=${genre}` %>"> <%= genre %> </a>
+      </div>
+      <% } %>
+    </nav>
+
+    <section class="movies">
+      <% for (let movie of movies) { %>
+      <a href="<%- `/movie/${movie.id}` %>">
+        <article class="movie">
+          <img class="movie__image" src="<%- movie.imageURL %>" />
+          <h2 class="movie__title"><%- movie.title %></h2>
+          <div class="movie__actions">
+            <span class="movie__rating"> <%- movie.averageRating %> </span>
+            <button class="btn btn--icon">
+              <span class="material-icons-outlined">add</span>
+            </button>
+          </div>
+        </article>
+      </a>
+      <% } %>
+    </section>
+  </main>
+</html>

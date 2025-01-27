@@ -1,53 +1,56 @@
-import db from '../db/index.js'
+import db from "../db/index.js";
 
 class Movie {
   static allowedGenres = [
-    'Adventure',
-    'Action',
-    'Animation',
-    'Biography',
-    'Crime',
-    'Drama',
-    'Fantasy',
-    'History',
-    'Horror',
-    'Mystery',
-    'Romance',
-    'War'
-  ]
+    "Adventure",
+    "Action",
+    "Animation",
+    "Biography",
+    "Crime",
+    "Drama",
+    "Fantasy",
+    "History",
+    "Horror",
+    "Mystery",
+    "Romance",
+    "War",
+  ];
 
   static async findAll(genre) {
     const query = [
-      'select movies.*',
-      'from movies',
-      'left join reviews on movies.id = reviews.movieId'
-    ]
+      "select movies.*",
+      "from movies",
+      "left join reviews on movies.id = reviews.movieId",
+    ];
 
-    const values = []
+    const values = [];
 
     if (genre) {
-      query.push('where lower(movies.genre) like ?')
-      values.push('%' + genre + '%')
+      query.push("where lower(movies.genre) like ?");
+      values.push("%" + genre + "%");
     }
 
-    query.push('group by movies.id')
-    query.push('order by movies.releaseDate desc')
+    query.push("group by movies.id");
+    query.push("order by movies.releaseDate desc;");
 
-    const results = await db.raw(query.join(' '), values)
-    return results
+
+    const results = await db.raw(query.join(" "), values);
+
+
+    return results;
   }
 
   static async findById(id) {
-    const query = 'select * from movies where id = ?'
-    const results = await db.raw(query, [id])
-    return results[0]
+    const query = "select * from movies where id = ?";
+    const results = await db.raw(query, [id]);
+    return results[0];
   }
 
   static async findReviews(id) {
-    const query = 'select * from reviews where movieId = ?'
-    const results = await db.raw(query, [id])
-    return results
+    const query = "select * from reviews where movieId = ?";
+    const results = await db.raw(query, [id]);
+    return results;
   }
 }
 
-export default Movie
+export default Movie;

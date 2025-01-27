@@ -1,0 +1,18 @@
+:root {
+    /* backgrounds */
+    --c-bg-darkest: hsl(0, 0%, 3%);
+    --c-bg-darker: hsl(0, 0%, 5%);
+    --c-bg: hsl(0, 0%, 7%);
+    --c-bg-lighter: hsl(0, 0%, 9%);
+    --c-bg-lightest: hsl(0, 0%, 11%);
+    --c-button-hover: hsl(0, 0%, 14%);
+    --c-button-active: hsl(0, 0%, 17%);
+    --c-border-active: hsl(0, 0%, 40%);
+  
+    /* text */
+    --ff: Arial,
+      Helvetica,
+      sans-serif;
+    --c-text: hsl(0, 0%, 70%);
+    --c-text-light: hsl(0, 0%, 100%);
+  }
